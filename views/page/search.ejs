@@ -1,0 +1,25 @@
+<div class="container-fluid h-100 d-flex justify-content-center mt-3">
+    <div class="card bxsd" style="width: 95%;">
+        <h1 class="text-center">Hasil dari: <%= search%></h1>
+    
+        <% data.forEach(has =>{%>
+            <div class="card mx-auto mt-3 mb-3" style="width: 90%;" >
+                <div class="row">
+                    <div class="col-4">
+                        <img src=<%= has.img  %> class="card-img-top mb-3 shadowbor" alt="Gambar Film">
+                    </div>
+                    <div class="col-8" >
+                        <div class="card-body" >
+                            <p>Title : <%= has.judul %></p>
+                            <% has.info.forEach(das =>{%>
+                                <p><%= das %></p>
+                            <%})  %> 
+                        </div>
+                    </div>
+                </div>
+                <a href=<%= has.href  %> class="btn btn-outline-danger text-center">Selengkapnya</a>
+            </div>
+            <%}) %>
+    
+    </div>
+  </div>

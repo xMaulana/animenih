@@ -1,0 +1,23 @@
+body{
+    background-image: url("/img/bg.jpeg");
+}
+
+div.bxsd{
+    box-shadow: 8px 8px 8px rgb(0, 0, 0);
+}
+
+.bgrtxt{
+    background-color: rgba(11, 11, 83, 0.493);
+    color: white;
+    font-size: 25px;
+    border-radius: 10px;
+    box-shadow: 8px 8px 8px rgb(0, 0, 0);
+}
+
+.martop > h5.defined:not(:first-child){
+    margin-top: 20px;
+}
+
+.shadowbor{
+    box-shadow: 8px 8px 8px rgb(0, 0, 0);
+}
