@@ -14,7 +14,7 @@ router.get("/", async (req,res) =>{
             layout: "main-layout"
         })
     }catch(err){
-        res.status(400).send("error!")
+        res.status(400).json({err})
     }
 })
 
