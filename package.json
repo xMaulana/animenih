@@ -10,7 +10,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/xMaulana/animenih.git"
+    "url": "git+https://github.com/xMaulana/animenih.git",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "axios": "^1.2.2",
