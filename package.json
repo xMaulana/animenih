@@ -5,8 +5,7 @@
   "license": "MIT",
   "type": "commonjs",
   "scripts": {
-    "start": "node index.js",
-    "build": "npm start"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
