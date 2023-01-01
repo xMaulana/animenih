@@ -20,6 +20,4 @@ app.use("*",(req,res,next) =>{
     });
 })
 
-app.listen(PORT, () =>{
-    console.log(`Aplikasi berjalan pada port ${PORT}`)
-})
+app.listen(PORT)
