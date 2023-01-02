@@ -76,7 +76,7 @@ const readManga = async(title) =>{
     //ambil semua gambar
     jdom.querySelector("#chimg-auh").querySelectorAll("img").forEach(res =>{
         let imgdat = res.getAttribute("src")
-        let temp = imgdat.split("/")[2].replace(".","-") + ".translate.goog";
+        let temp = imgdat.split("/")[2].replace(/\./g,"-") + ".translate.goog";
         imgdat = imgdat.replace(imgdat.split("/")[2], temp);
         b.allImg.push(imgdat)
     })
