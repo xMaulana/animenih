@@ -58,7 +58,7 @@
     margin-top: 20px;
   }
   
-  .box-utama a:hover{
+  .box-utama a:nth-of-type(1):hover{
     background: #F2E1C1;
     color: #fff;
     border-radius: 5px;
@@ -73,7 +73,7 @@
     display: block;
   }
   
-  .box-utama a span:nth-child(1){
+  .box-utama a:nth-of-type(1) span:nth-child(1){
     top: 0;
     left: -100%;
     width: 100%;
@@ -91,7 +91,7 @@
     }
   }
   
-  .box-utama a span:nth-child(2){
+  .box-utama a:nth-of-type(1) span:nth-child(2){
     top: -100%;
     right: 0;
     width: 2px;
@@ -110,7 +110,7 @@
     }
   }
   
-  .box-utama a span:nth-child(3){
+  .box-utama a:nth-of-type(1) span:nth-child(3){
     bottom: 0;
     right: -100%;
     width: 100%;
@@ -129,7 +129,7 @@
     }
   }
 
-  .box-utama a span:nth-child(4){
+  .box-utama a:nth-of-type(1) span:nth-child(4){
     left: 0px;
     bottom: -100%;
     width: 2px;
