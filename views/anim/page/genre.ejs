@@ -1,0 +1,37 @@
+<div class="container-fluid h-100 d-flex justify-content-center mt-3">
+    <div class="card bxsd" style="width: 95%;">
+        <h1 class="text-center">Genre: <%= genre%></h1>
+    
+        <% data.forEach(has =>{%>
+            <div class="card mx-auto mt-3" style="width: 90%;" >
+                <div class="row">
+                    <div class="col-4">
+                        <img src=<%= has.img  %> class="card-img-top mb-3 shadowbor" alt="Gambar Film">
+                    </div>
+                    <div class="col-8" >
+                        <div class="card-body" >
+                            <b>Title: </b><%= has.title %><br>
+                            <b>Studio: </b><%= has.studio %> <br>
+                            <b>Episode: </b><%= has.eps  %> <br>
+                            <b>Rilis: </b><%= has.rilis %> <br>
+                            <b>Genre: </b><%= has.genre  %> <br>
+                            <b>Sinopsis: </b><%= has.sinopsis  %> <br>
+                        </div>
+                    </div>
+                </div>
+                <a href=<%= "/kartun/" +has.href  %> class="btn btn-outline-danger text-center">Selengkapnya</a>
+            </div>
+            <%}) %>
+    
+            <div class="dropdown mx-auto mt-5 mb-5">
+                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-boundary="viewport">
+                  <%= page  %> 
+                </a>
+                <ul class="dropdown-menu">
+                    <% for(let i = 1; i<=jml; i++){%>
+                    <li><a href=<%= "/kartun/genre/"+genre+"/page/"+i%> class="dropdown-item"><%=i  %></a></li>    
+                    <% }  %> 
+                </ul>
+              </div>
+    </div>
+  </div>

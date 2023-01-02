@@ -1,0 +1,24 @@
+<div class="card" style="width: 90%;">
+    <img class="card-img-top" src="<%= thumb %>" alt="imgSrc" style="width: 20%; margin-left: auto; margin-right:auto;">
+
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Judul Alternatif: <%= info[0] %></li>
+      <li class="list-group-item">Status: <%= info[1]%></li>
+      <li class="list-group-item">Pengarang: <%= info[2]%></li>
+      <li class="list-group-item">Genre: <%= info[4]%></li>
+      <li class="list-group-item">Jenis: <%= info[5]%></li>
+    </ul>
+    <div class="card-body">
+      <a href="/komik/readManga/<%= chapter[chapter.length-1].linkManga%>" class="card-link">Baca chapter Pertama: <%= chapter[chapter.length-1].chap%></a>
+      <a href="/komik/readManga/<%= chapter[0].linkManga%>" class="card-link">Baca chapter terbaru: <%= chapter[0].chap%></a>
+    </div>
+  </div>
+<br><h2 class="text-white bg-dark">LIST CHAPTER</h2> 
+  <div class="card" style="width: 80%;">
+    <ul class="list-group list-group-flush">
+    <% chapter.forEach(res => {%> 
+      <li class="list-group-item" onclick="(function(){window.location.href='/komik/readManga/<%= res.linkManga%>'})()" style="cursor:pointer;">Chapter <%= res.chap %></li>
+    <% }) %> 
+    </ul>
+  </div>
+  <br>

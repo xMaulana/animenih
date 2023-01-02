@@ -1,0 +1,18 @@
+<h4 class="text-white bg-dark">hasil pencarian <%= title  %> </h4> 
+
+<div class="container card">
+    <div class="row mt-5 mov-container">
+        <% data.data.forEach(res => { %>
+            <div class="card col-md-3 my-3" style="width: 10rem">
+                <img src="<%= res.linkGambar %>?width=146&height=208" class="card-img-top" alt="komik <%= res.judul  %> ">
+                <div class="card-body">
+                    <h5 class="card-title"><%= res.judul %></h5><br>
+                    <a href="/komik/bacaManga/<%= res.linkManga[res.linkManga.length -2] %>" class="btn btn-primary">Baca Manga</a>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+</div>
+
+
+<br>

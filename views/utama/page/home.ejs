@@ -1,0 +1,48 @@
+  <div class="box-utama">
+    <h2 href="https://github.com/xMaulana" id="clickB">SleepingOwl</h2>
+    <center>
+      <a href="/komik" id="Btn1">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        Baca Manga
+      </a>
+      <a href="/kartun" id="Btn2">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        Nonton Anime
+      </a>
+      <a href="/kotaksaran" id="Btn3">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        Kotak Saran
+      </a>
+    </center>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script>
+    Swal.fire({
+            icon: 'info',
+            title: 'Halo!',
+            text: 'Selamat datang!'
+        })
+
+    document.querySelector("#Btn3").addEventListener("click", (e) =>{
+        e.preventDefault();
+        Swal.fire({
+            icon: 'error',
+            title: 'Ups...',
+            text: 'Mohon maaf',
+            footer: '<p>Menu masih belum tersedia!</p>'
+        })
+    });
+    document.querySelector("#clickB").addEventListener("click",(e) =>{
+        window.location.href = "https://github.com/xMaulana";
+    });
+  </script>
+  </script>

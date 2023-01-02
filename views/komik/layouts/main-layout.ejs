@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+      body{
+        background: url("/img/bg.png");
+      }
+      h1,h2{
+        color: white;
+      }
+    </style>
+    <title><%= title  %> </title>
+  </head>
+  <body>
+    <center><h1><%- header1 %></h1>
+      <% if(typeof baca == "undefined"){ %> 
+      <form action="komik/cariManga" method="post">
+        <div class="form-group col-md-5 mb-2">
+          <label for="CariManga" class="text-white bg-dark">Cari Manga</label>
+          <input type="text" class="form-control text-center" aria-describedby="Manga" placeholder="Cari Manga" name="manga">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+      </center>
+      <br><br>
+      <% } %> 
+    <%- body %>
+    <center><p class="text-white">Web ini dibuat dengan tujuan pembelajaran. <br>Semua konten yang ada di dalam web ini berasal dari <a href="https://komikindo.id">Komikindo</a></p>
+    <p class="text-white">WEB INI DIBUAT OLEH: @mwmaulana310</p></center>
+    
+  </body>
+</html>

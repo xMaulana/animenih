@@ -1,0 +1,279 @@
+@font-face {
+    font-family: loginfont;
+    src: url("/font/FjallaOne-Regular.ttf");
+  }
+  * {
+      font-family: loginfont, cursive;
+    }
+  
+  html{
+    height: 100%;
+  }
+  
+  body{
+    margin:0;
+    padding: 0;
+    /* background: #716f81; */
+    background: url("/img/bg.png");
+  }
+  
+  .box-utama{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    padding: 40px;
+    transform: translate(-50%,-50%);
+    background: rgba(185,122, 149,.5);
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0,0,0,.6);
+    border-radius: 10px;
+  }
+  
+  .box-utama h2{
+    margin: 0 0 30px;
+    padding: 0;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+    transition: all .5s ease;
+  }
+
+  .box-utama h2:hover{
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #49ff18, 0 0 30px #49ff18, 0 0 40px #49ff18, 0 0 55px #49ff18, 0 0 75px #49ff18;
+  }
+  
+  /*BTN 1*/
+  .box-utama a:nth-of-type(1){
+    position: relative;
+    display: inline-block;
+    padding: 10px 50px;
+    color: #F2E1C1;
+    font-size: 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    transition: .5s;
+    letter-spacing: 4px;
+    margin-top: 20px;
+  }
+  
+  .box-utama a:hover{
+    background: #F2E1C1;
+    color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #F2E1C1,
+                0 0 25px #F2E1C1,
+                0 0 50px #F2E1C1,
+                0 0 100px #F2E1C1;
+  }
+  
+  .box-utama a span{
+    position: absolute;
+    display: block;
+  }
+  
+  .box-utama a span:nth-child(1){
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #F2E1C1);
+    animation: btn-anim1 1s linear infinite;
+  }
+  
+  @keyframes btn-anim1 {
+    0%{
+      left: -100%
+    }
+    50%,100%{
+      left:100%
+    }
+  }
+  
+  .box-utama a span:nth-child(2){
+    top: -100%;
+    right: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(180deg, transparent, #F2E1C1);
+    animation: btn-anim2 1s linear infinite;
+    animation-delay: .25s;
+  }
+  
+  @keyframes btn-anim2 {
+    0%{
+      top: -100%
+    }
+    50%,100%{
+      top:100%
+    }
+  }
+  
+  .box-utama a span:nth-child(3){
+    bottom: 0;
+    right: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(270deg, transparent, #F2E1C1);
+    animation: btn-anim3 1s linear infinite;
+    animation-delay: .5s;
+  }
+  
+  @keyframes btn-anim3 {
+    0%{
+      right: -100%
+    }
+    50%,100%{
+      right:100%
+    }
+  }
+
+  .box-utama a span:nth-child(4){
+    left: 0px;
+    bottom: -100%;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(360deg, transparent, #F2E1C1);
+    animation: btn-anim4 1s linear infinite;
+    animation-delay: .75s;
+  }
+  
+  /*BTN2*/
+  .box-utama a:nth-of-type(2){
+    position: relative;
+    display: inline-block;
+    padding: 10px 50px;
+    color: #c1f2c1;
+    font-size: 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    transition: .5s;
+    letter-spacing: 4px;
+    margin-top: 20px;
+  }
+
+  .box-utama a:nth-of-type(2):hover{
+    background: #c1f2c1;
+    color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #c1f2c1,
+                0 0 25px #c1f2c1,
+                0 0 50px #c1f2c1,
+                0 0 100px #c1f2c1;
+  }
+  
+  .box-utama a:nth-of-type(2) span:nth-child(1){
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #c1f2c1);
+    animation: btn-anim1 1s linear infinite;
+  }
+
+  .box-utama a:nth-of-type(2) span:nth-child(2){
+    top: -100%;
+    right: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(180deg, transparent, #c1f2c1);
+    animation: btn-anim2 1s linear infinite;
+    animation-delay: .25s;
+  }
+
+  .box-utama a:nth-of-type(2) span:nth-child(3){
+    bottom: 0;
+    right: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(270deg, transparent, #c1f2c1);
+    animation: btn-anim3 1s linear infinite;
+    animation-delay: .5s;
+  }
+  
+  .box-utama a:nth-of-type(2) span:nth-child(4){
+    left: 0px;
+    bottom: -100%;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(360deg, transparent, #c1f2c1);
+    animation: btn-anim4 1s linear infinite;
+    animation-delay: .75s;
+  }
+  
+
+  @keyframes btn-anim4 {
+    0%{
+      bottom: -100%
+    }
+    50%,100%{
+      bottom:100%
+    }
+  }
+
+  /*BTN3*/
+  .box-utama a:nth-of-type(3){
+    position: relative;
+    display: inline-block;
+    padding: 10px 50px;
+    color: #deb6f8;
+    font-size: 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    transition: .5s;
+    letter-spacing: 4px;
+    margin-top: 20px;
+  }
+
+  .box-utama a:nth-of-type(3):hover{
+    background: #deb6f8;
+    color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #deb6f8,
+                0 0 25px #deb6f8,
+                0 0 50px #deb6f8,
+                0 0 100px #deb6f8;
+  }
+  
+  .box-utama a:nth-of-type(3) span:nth-child(1){
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #deb6f8);
+    animation: btn-anim1 1s linear infinite;
+  }
+
+  .box-utama a:nth-of-type(3) span:nth-child(2){
+    top: -100%;
+    right: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(180deg, transparent, #deb6f8);
+    animation: btn-anim2 1s linear infinite;
+    animation-delay: .25s;
+  }
+
+  .box-utama a:nth-of-type(3) span:nth-child(3){
+    bottom: 0;
+    right: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(270deg, transparent, #deb6f8);
+    animation: btn-anim3 1s linear infinite;
+    animation-delay: .5s;
+  }
+  
+  .box-utama a:nth-of-type(2) span:nth-child(4){
+    left: 0px;
+    bottom: -100%;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(360deg, transparent, #deb6f8);
+    animation: btn-anim4 1s linear infinite;
+    animation-delay: .75s;
+  }
+  

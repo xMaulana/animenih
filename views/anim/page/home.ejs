@@ -1,0 +1,40 @@
+<h1 class="text-white text-center text-decoration-underline" id="ongoing">ANIME ONGOING</h1>
+
+<center>
+<div class="container">
+    <div class="row">
+        <% onGoing.forEach(res =>{%>
+            <div class="col-sm-6 col-md-4 mt-5">
+                    <div class="card bxsd" style="width: 13rem;">
+                        <img src=<%= res.gambar %>  class="card-img-top" alt="...">
+                        <div class="card-body">
+                        <h5 class="card-title"><%= res.judul %> </h5>
+                        <p class="card-text"><%= res.episode  %> </p>
+                        <a href=<%= "/kartun/anime/"+res.href  %>  class="btn btn-outline-danger">Selengkapnya</a>
+                        </div>
+                    </div>
+            </div>           
+        <%}) %> 
+    </div>
+</div>
+</center>
+<h1 class="text-white text-center text-decoration-underline mt-5">COMPLETE ANIME</h1>
+<center>
+<div class="container">
+    <div class="row">
+        <% selesai.forEach(res =>{%>
+            <div class="col-sm-6 col-md-4 mt-5">
+                    <div class="card bxsd" style="width: 13rem;">
+                        <img src=<%= res.gambar %>  class="card-img-top" alt="...">
+                        <div class="card-body">
+                        <h5 class="card-title"><%= res.judul %> </h5>
+                        <p class="card-text"><%= res.episode  %> </p>
+                        <a href=<%= "/kartun/anime/"+res.href  %>  class="btn btn-outline-danger">Selengkapnya</a>
+                        </div>
+                    </div>
+            </div>           
+        <%}) %> 
+    </div>
+</div>
+
+</center>
