@@ -7,11 +7,11 @@ router.get("/", async (req,res) =>{
     try{
         let data = await sData.getHome();
         data = data.data
-        res.render("page/home", {
+        res.render("anim/page/home", {
             onGoing: data.onGoing,
             selesai: data.selesai,
             current: "home",
-            layout: "main-layout"
+            layout: "anim/main-layout"
         })
     }catch(err){
         res.status(400).json({err})
@@ -22,9 +22,9 @@ router.get("/anime/:judul",async (req,res) =>{
     try{
         const data = await sData.getAnime(req.params.judul);
 
-        res.render("page/animdat",{
+        res.render("anim/page/animdat",{
             animdat: data.data,
-            layout: "main-layout",
+            layout: "anim/main-layout",
             current: "nothing",
         })
     }catch(err){
@@ -36,9 +36,9 @@ router.get("/episode/:juduleps", async (req,res) =>{
     try{
         const data = await sData.getEpisode(req.params.juduleps)
         
-        res.render("page/episode", {
+        res.render("anim/page/episode", {
             data: data.data,
-            layout: "main-layout",
+            layout: "anim/main-layout",
             current: "nothing"
         })
     }catch(err){
@@ -50,9 +50,9 @@ router.get("/batch/:juduleps", async (req,res) =>{
     try{
         const data = await sData.getBatch(req.params.juduleps)
 
-        res.render("page/batch", {
+        res.render("anim/page/batch", {
             data: data.data,
-            layout: "main-layout",
+            layout: "anim/main-layout",
             current: "nothing"
         })
     }catch(err){
@@ -64,9 +64,9 @@ router.get("/lengkap/:judul", async(req, res) =>{
     try{
         let data = await sData.getLengkap(req.params.judul);
         // res.json({data})
-        res.render("page/lengkap",{
+        res.render("anim/page/lengkap",{
             data: data.data,
-            layout: "main-layout",
+            layout: "anim/main-layout",
             current: "nothing"
         })
     }catch(err){
@@ -80,9 +80,9 @@ router.get("/list-anime", async (req,res) =>{
         let data = await sData.getAnimeList();
 
         // res.json({data})
-        res.render("page/list-anim",{
+        res.render("anim/page/list-anim",{
             data: data.data,
-            layout: "main-layout",
+            layout: "anim/main-layout",
             current: "list-anime"
         })
     }catch(err){
@@ -95,9 +95,9 @@ router.get("/list-genre", async (req, res) =>{
         let data = await sData.getGenreList();
 
         // res.json({data})
-        res.render("page/list-genre",{
+        res.render("anim/page/list-genre",{
             data: data.data,
-            layout: "main-layout",
+            layout: "anim/main-layout",
             current: "list-genre"
         })
     }catch(err){
@@ -111,12 +111,12 @@ router.get("/genre/:genre/page/:page", async(req,res,next) =>{
     let data = await sData.getGenre(req.params.genre, req.params.page)
 
     // res.json({data})
-    res.render("page/genre",{
+    res.render("anim/page/genre",{
         page: req.params.page,
         genre: req.params.genre,
         data: data.data.anim,
         jml: data.data.jmlPage,
-        layout: "main-layout",
+        layout: "anim/main-layout",
         current: "nothing"
     })
     }
@@ -128,17 +128,17 @@ router.get("/genre/:genre/page/:page", async(req,res,next) =>{
 router.get("/search", async(req, res) =>{
     try{
         const data = await sData.searchAnim(req.query.judul);
-        console.log(data)
+    
         // res.json({data})
-        res.render("page/search",{
+        res.render("anim/page/search",{
             current: "nothing",
             search: req.query.judul,
-            layout: "main-layout",
+            layout: "anim/main-layout",
             data: data.data
         })
     }catch(err){
         res.status(404).render("page/notfound",{
-            layout: "main-layout",
+            layout: "anim/main-layout",
             current: "nothing"
         });
     }

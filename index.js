@@ -1,23 +1,31 @@
 require("dotenv").config()
 const express = require("express")
-const route = require("./routers/animRoute")
+const kartunRoute = require("./routers/animRoute")
+const komikRoute = require("./routers/komikRoute")
 const ejsLay = require("express-ejs-layouts")
+const bodyParser = require("body-parser")
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.NODE_ENV == "development" ? 3000 : process.env.PORT;
 
 
 app.set("view engine", "ejs")
 app.use(ejsLay)
 
+app.use(bodyParser.urlencoded({extended: false}))
+app.use(bodyParser.json());
 app.use(express.static("public"))
 
-app.use("/", route);
+app.use("/kartun", kartunRoute);
+app.use("/komik", komikRoute);
 
-app.use("*",(req,res,next) =>{
-    res.status(404).render("page/notfound",{
-        layout: "main-layout",
-        current: "nothing"
-    });
+app.get("/",(req,res) =>{
+    res.render("utama/page/home",{
+        layout: "utama/main-layout"
+    })
 })
 
-app.listen(PORT)
+app.use("*",(req,res,next) =>{
+    res.status(404).send("<h1>Not Found</h1>")
+})
+
+app.listen(PORT,()=> console.log("Aplikasi berjalan pada port "+ PORT) + PORT)
