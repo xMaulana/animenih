@@ -4,6 +4,7 @@ const kartunRoute = require("./routers/animRoute")
 const komikRoute = require("./routers/komikRoute")
 const ejsLay = require("express-ejs-layouts")
 const bodyParser = require("body-parser")
+const morgan = require("morgan")
 const app = express();
 const PORT = process.env.NODE_ENV == "development" ? 3000 : process.env.PORT;
 
@@ -11,6 +12,7 @@ const PORT = process.env.NODE_ENV == "development" ? 3000 : process.env.PORT;
 app.set("view engine", "ejs")
 app.use(ejsLay)
 
+app.use(morgan(":date | :method | :url | :status | :remote-addr | :response-time ms"))
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json());
 app.use(express.static("public"))
