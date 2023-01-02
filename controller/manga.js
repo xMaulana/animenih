@@ -3,10 +3,35 @@ const axios = require('axios');
 
 const website = "https://komikindo.id/";
 
+const user_agent = [
+    'Mozilla/5.0 (iPad; CPU OS 12_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148',
+    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.83 Safari/537.36',
+    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36'
+]
+
+const getData= async(link) =>{
+    const data = await axios.get(link, {
+        headers: {
+            "User-Agent": user_agent[Math.floor(Math.random()%user_agent.length)],
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+            "Accept-Language": "en-US,en;q=0.5",
+            "Accept-Encoding": "gzip, deflate",
+            "Connection": "keep-alive",
+            "Upgrade-Insecure-Requests": "1",
+            "Sec-Fetch-Dest": "document",
+            "Sec-Fetch-Mode": "navigate",
+            "Sec-Fetch-Site": "none",
+            "Sec-Fetch-User": "?1",
+            "Cache-Control": "max-age=0",
+        }
+    })
+    return new JSDOM(data.data).window.document
+}
+
+
 const homeManga = async () =>{
     try{
-     let data = await axios.get(website)
-     let jdom = new JSDOM(data.data).window.document;
+     let jdom = await getData(website)
      let data2 = jdom.querySelector(".postbody");
      let b = {
          populer: [],
@@ -43,8 +68,7 @@ const homeManga = async () =>{
  }
 
 const readManga = async(title) =>{
-    let data = await axios.get(`${website}${title}`);
-    let jdom = new JSDOM(data.data).window.document;
+    let jdom = await getData(`${website}${title}`);
     let b = {
         allImg: [],
         nePr: []
@@ -63,8 +87,7 @@ const readManga = async(title) =>{
 }
 
 const searchManga = async (judul) =>{
-    let data = await axios.get(`${website}?s=${judul}`);
-    let jdom = new JSDOM(data.data).window.document;
+    let jdom = await getData(`${website}?s=${judul}`);
     let b = {
         data: []
     }
@@ -84,8 +107,7 @@ const searchManga = async (judul) =>{
 const viewManga = async (judul) =>{
     try{
     let link = `${website}komik/${judul}`
-    let data = await axios.get(link)
-    let jdom = new JSDOM(data.data).window.document
+    let jdom = await getData(link)
     let data2 = jdom.querySelector(".postbody")
     let b = {
         info: [],

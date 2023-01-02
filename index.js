@@ -12,7 +12,12 @@ const PORT = process.env.NODE_ENV == "development" ? 3000 : process.env.PORT;
 app.set("view engine", "ejs")
 app.use(ejsLay)
 
-app.use(morgan(":date | :method | :url | :status | :remote-addr | :response-time ms"))
+if(process.env.NODE_ENV == "development"){
+    app.use(morgan(":date | :method | :url | :status | :remote-addr | :response-time ms"))
+}else{
+    app.use(morgan(":date | :url | :remote-addr"))
+}
+
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json());
 app.use(express.static("public"))

@@ -21,6 +21,7 @@ app.post("/cariManga", async (req,res) =>{
 app.get("/readManga/:title1",async (req,res) =>{
     try{
         let data = await readManga(req.params.title1);
+        // res.json({data})
         res.render("komik/read",{
             layout: "komik/layouts/main-layout",
             title: req.params.title1.split("-").join(" ").toUpperCase(),
