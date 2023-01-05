@@ -1,0 +1,50 @@
+
+  <div class="saran-form">
+    <h2>KOTAK SARAN</h2>
+    <form action="/kotakSaran" method="post" id="formUtama">
+      <div class="usr-box">
+        <input type="text" name="username" id="usrName" required />
+        <label>Username</label>
+      </div>
+      <label style="color: white;">Saran</label>
+      <div class="usr-box">
+        <textarea name="saran" id="kSaran" rows="4" placeholder="Masukkan saran disini..." required></textarea>
+      </div>
+      <a href="#" id="sbmtBtn">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        Submit
+      </a>
+    </form>
+  </div>
+ 
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <% if(flashMsg[0]) {%>
+    <script>
+        Swal.fire({
+            icon: "<%= flashMsg[1] == 'Error' ? 'error' : 'success' %>",
+            title: "<%= flashMsg[1] == 'Error' ? 'Gagal!' : 'Sukses!' %>",
+            text: "<%= flashMsg[0]%>" + "\nTerima kasih banyak!"
+        })
+    </script>
+    <%} %> 
+  <script>
+    let idN = document.querySelector("#usrName")
+    idN.value = "<%= id %>";
+    let kSaran = document.querySelector("#kSaran")
+
+    document.querySelector("#sbmtBtn").addEventListener("click", (res) =>{
+        if(idN.value == "" || kSaran.value == ""){
+            Swal.fire({
+                icon: "error",
+                title: "Ups...",
+                text: "Username atau teks tidak boleh kosong!"
+            })
+        }else{
+            document.querySelector("#formUtama").submit()
+        }
+    })
+  </script>
+  </script>

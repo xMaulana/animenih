@@ -24,6 +24,7 @@
       </a>
     </center>
   </div>
+  
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script>
     Swal.fire({
@@ -32,17 +33,22 @@
             text: 'Selamat datang!'
         })
 
-    document.querySelector("#Btn3").addEventListener("click", (e) =>{
-        e.preventDefault();
-        Swal.fire({
-            icon: 'error',
-            title: 'Ups...',
-            text: 'Mohon maaf',
-            footer: '<p>Menu masih belum tersedia!</p>'
-        })
-    });
+    // document.querySelector("#Btn3").addEventListener("click", (e) =>{
+    //     e.preventDefault();
+    //     Swal.fire({
+    //         icon: 'error',
+    //         title: 'Ups...',
+    //         text: 'Mohon maaf',
+    //         footer: '<p>Menu masih belum tersedia!</p>'
+    //     })
+    // });
     document.querySelector("#clickB").addEventListener("click",(e) =>{
         window.location.href = "https://github.com/xMaulana";
     });
   </script>
   </script>
+
+
+  <p style="color: white;">Online: <%= online %></p>
+  <p style="color: white; margin-top: 1px;">Hari ini: <%= today %></p>
+  <p style="color: white; margin-top: 1px;">Total: <%= total %></p>
