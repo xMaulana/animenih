@@ -111,7 +111,7 @@ server.listen(PORT, async()=>{
         console.log(data.msg);
         console.log("Aplikasi berjalan pada port "+ PORT) + PORT
     }catch(err){
-        console.err(err)
+        console.log(err)
     }
    
 })
