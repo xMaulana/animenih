@@ -6,19 +6,90 @@
       <li class="list-group-item">Status: <%= info[1]%></li>
       <li class="list-group-item">Pengarang: <%= info[2]%></li>
       <li class="list-group-item">Genre: <%= info[4]%></li>
-      <li class="list-group-item">Jenis: <%= info[5]%></li>
+      <li class="list-group-item">Jenis: <%- info[5]%></li>
     </ul>
+    <center><button type="button" id="bookmarkBtn" class="btn btn-outline-danger my-4" style="width: 25%;">Tambahkan ke Bookmark</button></center>
     <div class="card-body">
-      <a href="/komik/readManga/<%= chapter[chapter.length-1].linkManga%>" class="card-link">Baca chapter Pertama: <%= chapter[chapter.length-1].chap%></a>
-      <a href="/komik/readManga/<%= chapter[0].linkManga%>" class="card-link">Baca chapter terbaru: <%= chapter[0].chap%></a>
+      <a href="/komik/readManga/<%= chapter[chapter.length-1].linkManga%>" class="btn btn-outline-primary">Baca chapter Pertama: <%= chapter[chapter.length-1].chap%></a>
+      <a href="/komik/readManga/<%= chapter[0].linkManga%>" class="btn btn-outline-primary">Baca chapter terbaru: <%= chapter[0].chap%></a>
     </div>
   </div>
 <br><h2 class="text-white bg-dark">LIST CHAPTER</h2> 
   <div class="card" style="width: 80%;">
     <ul class="list-group list-group-flush">
     <% chapter.forEach(res => {%> 
-      <li class="list-group-item" onclick="(function(){window.location.href='/komik/readManga/<%= res.linkManga%>'})()" style="cursor:pointer;">Chapter <%= res.chap %></li>
+      <li class="list-group-item" style="width: 100%;"><a href="/komik/readManga/<%= res.linkManga %>" class="btn btn-outline-danger" style="width: 80%;">Chapter <%= res.chap  %></a></li>
     <% }) %> 
     </ul>
   </div>
   <br>
+
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script>
+      let item = JSON.parse(localStorage.getItem("sleepingowl")) || false;
+      let btn = document.querySelector("#bookmarkBtn");
+   
+      const p = {
+          judul:  "<%=title.replace('KOMIK ', '')%>",
+          gambar: "<%= thumb %>",
+          link: window.location.href,
+          type: "komik"
+      }
+      
+      if(item && item.find(dat => dat.link == p.link)){
+          btn.innerHTML = "Sudah dimasukkan kedalam bookmark"
+          btn.disabled = true;
+      }
+  
+      document.querySelector("#bookmarkBtn").addEventListener("click", (ev) =>{
+          try{
+              if(!item){
+                  localStorage.setItem("sleepingowl", JSON.stringify([p]))
+  
+                  Swal.fire({
+                      position: 'top-end',
+                      icon: 'success',
+                      title: 'Berhasil memasukkan ke bookmark',
+                      showConfirmButton: false,
+                      timer: 1500
+                  })
+  
+                  btn.innerHTML = "Sudah dimasukkan kedalam bookmark"
+                  btn.disabled = true;
+              }else{
+                  item = JSON.parse(localStorage.getItem("sleepingowl"))
+                  let opp = item.find(dat =>{
+                      return dat.link == p.link
+                  })
+  
+                  if(opp){
+                      throw new Error("gagal")
+                  }
+  
+                  item.push(p);
+  
+                  localStorage.setItem("sleepingowl", JSON.stringify(item));
+  
+                  Swal.fire({
+                      position: 'top-end',
+                      icon: 'success',
+                      title: 'Berhasil memasukkan ke bookmark',
+                      showConfirmButton: false,
+                      timer: 1500
+                  })
+                  
+                  btn.innerHTML = "Sudah dimasukkan kedalam bookmark"
+                  btn.disabled = true;
+              }
+          }catch(err){
+              Swal.fire({
+                      position: 'top-end',
+                      icon: 'error',
+                      title: 'Gagal memasukkan ke bookmark',
+                      showConfirmButton: false,
+                      timer: 1500
+                  })
+          }
+      })
+  
+  </script>

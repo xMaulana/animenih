@@ -5,10 +5,11 @@
                 <img src=<%= animdat.gambar  %> class="card-img-top mt-4 border border-3 border-dark" alt="Gambar Film">
             </div>
             <div class="col-8">
-                <div class="card-body mt-3">
+                <div class="card-body mt-3" id="lang_id">
                     <% animdat.info.forEach(dat =>{%>
                         <p><%- dat  %> </p>     
                     <%}) %> 
+                    <button type="button" class="btn btn-outline-danger" id="bookmarkBtn">Tambahkan ke Bookmark</button>
                 </div>
             </div>
         </div>
@@ -49,3 +50,73 @@
         <%}) %> 
     </div>
 </div>
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    let item = JSON.parse(localStorage.getItem("sleepingowl")) || false;
+    let btn = document.querySelector("#bookmarkBtn");
+ 
+    const p = {
+        judul: document.querySelector("#lang_id > p").childNodes[1].textContent.slice(2),
+        gambar: "<%= animdat.gambar %>",
+        link: window.location.href,
+        type: "anime"
+    }
+    
+    if(item && item.find(dat => dat.link == p.link)){
+        btn.innerHTML = "Sudah dimasukkan kedalam bookmark"
+        btn.disabled = true;
+    }
+
+    document.querySelector("#bookmarkBtn").addEventListener("click", (ev) =>{
+        try{
+            if(!item){
+                localStorage.setItem("sleepingowl", JSON.stringify([p]))
+
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Berhasil memasukkan ke bookmark',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+
+                btn.innerHTML = "Sudah dimasukkan kedalam bookmark"
+                btn.disabled = true;
+            }else{
+                item = JSON.parse(localStorage.getItem("sleepingowl"))
+                let opp = item.find(dat =>{
+                    return dat.link == p.link
+                })
+
+                if(opp){
+                    throw new Error("gagal")
+                }
+
+                item.push(p);
+
+                localStorage.setItem("sleepingowl", JSON.stringify(item));
+
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Berhasil memasukkan ke bookmark',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+
+                btn.innerHTML = "Sudah dimasukkan kedalam bookmark"
+                btn.disabled = true;
+            }
+        }catch(err){
+            Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: 'Gagal memasukkan ke bookmark',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+        }
+    })
+
+</script>

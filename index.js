@@ -14,6 +14,7 @@ const session = require("express-session")
 const kartunRoute = require("./routers/animRoute")
 const komikRoute = require("./routers/komikRoute")
 const saranRoute = require("./routers/saranRoute")
+const bookmarkRoute = require("./routers/bookmarkRoute")
 
 //db
 const db = require("./db/dbconfig")
@@ -47,8 +48,8 @@ app.use(express.static("public"))
 let uOn ={
     todayT: new Date(),
     curr: new Date(),
-    today: 0,
-    total: 0,
+    today: 9,
+    total: 537,
     users: {}
 }
 app.use(sessionParser)
@@ -90,6 +91,7 @@ setInterval(() =>{
 app.use("/kartun", kartunRoute);
 app.use("/komik", komikRoute);
 app.use("/kotakSaran", saranRoute)
+app.use("/bookmark", bookmarkRoute)
 app.get("/",(req,res) =>{
     res.render("utama/page/home",{
         layout: "utama/main-layout",

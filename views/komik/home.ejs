@@ -1,8 +1,8 @@
-<center><h2>MANGA POPULER</h2></center>
+<center><h2 id="popular">MANGA POPULER</h2></center>
 <div class="container card">
     <div class="row mt-5 mov-container">
         <% data.populer.forEach(res => { %>
-            <div class="card col-md-3 my-3" style="width: 10rem">
+            <div class="card col-md-5 mt-5 mx-3" style="width: 10rem">
                 <img src="<%=res.linkGambar  %>?width=146&height=208" class="card-img-top" alt="komik <%= res.judul  %>" itemprop="image">
                 <div class="card-body">
                     <h5 class="card-title"><%= res.judul %></h5><br>
@@ -15,11 +15,11 @@
 <br><br>
 
 
-<center><h2>MANGA TERBARU</h2></center>
+<center><h2 id="newManga">MANGA TERBARU</h2></center>
 <div class="container card">
     <div class="row mt-5 mov-container">
         <% data.terbaru.forEach(res => { %>
-            <div class="card col-md-3 my-3" style="width: 10rem">
+            <div class="card col-md-3 mt-5 mx-3" style="width: 10rem">
                 <img src="<%= res.linkGambar %>?width=146&height=208" class="card-img-top" alt="komik <%= res.judul  %> ">
                 <div class="card-body">
                     <h5 class="card-title"><%= res.judul %></h5><br>
