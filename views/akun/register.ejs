@@ -1,0 +1,67 @@
+<div class="saran-form">
+    <h2>Register</h2>
+    <form action="/akun/registrasi" method="post">
+      <div class="usr-box">
+        <input type="text" name="username" id="usrName" required />
+        <label>Username</label>
+      </div>
+      <div class="usr-box">
+        <input type="password" name="password" id="pwd" minlength="8" required>
+        <label>Password</label>
+      </div>
+      <div class="usr-box">
+        <input type="password" name="password2" id="pwd2" minlength="8" required>
+        <label>Password (Masukkan ulang)</label>
+      </div>
+      <a href="#" id="sbmtBtn">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        Submit
+      </a>
+    </form>
+  </div>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <% if(flashMsg.length > 0) {%>
+    <script>
+       Swal.fire({
+            icon: "<%= flashMsg[0] %>",
+            title: "<%= flashMsg[1] %>",
+            text: "<%= flashMsg[2] %>"
+        })
+    </script>
+  <%}%> 
+  <script>
+    document.querySelector("a#sbmtBtn").addEventListener("click", (res) =>{
+        let usr = document.querySelector("#usrName").value;
+        let pwd = document.querySelector("#pwd").value;
+        let pwd2 = document.querySelector("#pwd2").value;
+        if(usr.includes(" ")){
+          Swal.fire({
+            icon: "error",
+            title: "Gagal!",
+            text: "Registrasi gagal! username tidak boleh mengandung spasi!"
+          })
+        }else if(pwd.length < 8){
+          Swal.fire({
+            icon: "error",
+            title: "Gagal!",
+            text: "Registrasi gagal! password harus lebih panjang dari 8!"
+          })
+        }else if(pwd != pwd2){
+          Swal.fire({
+            icon: "error",
+            title: "Gagal!",
+            text: "Registrasi gagal! password di kedua kolom harus sama!"
+          })
+        }
+        else{
+            document.querySelector("form").submit()
+        }
+    })
+
+    document.addEventListener("keydown", ev =>{
+        if(ev.key == "Enter") document.querySelector("form").submit()
+    })
+  </script>

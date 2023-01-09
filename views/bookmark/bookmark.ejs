@@ -1,0 +1,78 @@
+<h1 class="text-white text-center text-decoration-underline" id="ongoing">BOOKMARK</h1>
+
+
+<center>
+    <div class="container">
+        <div class="row" id="cardUtama">
+           
+        </div>
+    </div>
+    </center>
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>   
+    let data = JSON.parse(localStorage.getItem("sleepingowl")) || false;
+    const utama = document.querySelector("#cardUtama");
+
+    function showBookmark(){
+        utama.innerHTML = "";
+        if(data && data.length >0 ){
+            data.forEach((dat,idx) =>{
+                utama.innerHTML += `
+                    <div class="col-sm-6 col-md-4 mt-5">
+                            <div class="card bxsd" style="width: 13rem;">
+                                <img src=${dat.gambar} alt=${dat.judul}  class="card-img-top">
+                                <div class="card-body">
+                                <h5 class="card-title">${dat.judul}</h5>
+                                <p class="card-text">${dat.type}</p>
+                                <a href=${dat.link} class="btn btn-outline-primary">Selengkapnya</a>
+                                <button type="button" class="buttonDelete btn btn-outline-danger mt-1" data-index=${idx} onclick="hapus(this)">Hapus</button>
+                                </div>
+                            </div>
+                    </div>  
+                `
+            })
+        }else{
+            utama.innerHTML = "<h3 style='color: white; margin-top: 20px;'>Anda belum menambahkan apapun kedalam bookmark!</h3>"
+        }
+    }
+
+    function hapus(el){
+        Swal.fire({
+            title: 'Anda yakin?',
+            text: "Hapus "+data[parseInt(el.dataset.index)].judul+ " dari bookmark?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, hapus!',
+            allowOutsideClick: false,
+            }).then((result) => {
+            if (result.isConfirmed) {
+                data.splice(el.dataset.index,1)
+                console.log(data)
+                localStorage.setItem("sleepingowl", JSON.stringify(data))
+                showBookmark();
+                Swal.fire(
+                'Sukses!',
+                'Berhasil menghapus!',
+                'success'
+                )
+            }
+        }).catch(err =>{
+            Swal.fire(
+                'Gagal!',
+                'Terjadi kesalahan saat menghapus!',
+                'error'
+                )
+        })
+    }
+
+    try {
+        showBookmark();
+    } catch (err) {
+        utama.innerHTML = "<h1>TERJADI KESALAHAN!</h1>"
+    }
+
+
+</script>
