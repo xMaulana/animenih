@@ -6,6 +6,7 @@ const ejsLay = require("express-ejs-layouts")
 const bodyParser = require("body-parser")
 const morgan = require("morgan")
 const uuid = require("uuid")
+const cookieParser = require("cookie-parser")
 
 // const WebSocket = require("ws")
 const session = require("express-session")
@@ -25,6 +26,7 @@ const server = require("http").createServer(app)
 // const io = require("socket.io")(server)
 const PORT = process.env.NODE_ENV == "development" ? 3000 : process.env.PORT;
 const sessionParser = session({
+    cookie: {maxAge: 24 * 60 * 60 * 1000, httpOnly:false, sameSite: "none"},
     saveUninitialized: true,
     secret: "sheilaSev7n",
     resave: false
@@ -53,13 +55,20 @@ let uOn ={
     users: {}
 }
 app.use(sessionParser)
+app.use(cookieParser())
 
-app.use((req, res, next) =>{
+app.use(async (req, res, next) =>{
     if(!req.session.userId){
         const id = uuid.v4()
         req.session.userId = id;
         uOn.today++;
         uOn.total++;
+    }
+
+    if(!req.cookies["sleepingowl"]){
+        let hex = require("crypto").randomBytes(30).toString("hex")
+        await res.cookie("sleepingowl",hex , {sameSite: "none", secure: true})
+        await db.getCol("akun").insertOne({ip:req.ip,userAgent: req.headers["user-agent"],cookie: hex})
     }
 
     if(req.session.userId){
@@ -100,6 +109,11 @@ app.get("/",(req,res) =>{
         today: uOn.today,
         total: uOn.total
     })
+})
+
+app.get("/ngapainkesini", async (req,res) =>{
+    let data = (await db.getCol("akun").find({}).toArray()).length
+    res.send(`<center><h1>Ngapain kesini? </h1><br><p>${data}</p></center>`);
 })
 
 app.use("*",(req,res,next) =>{
