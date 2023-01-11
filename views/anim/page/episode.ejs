@@ -2,11 +2,31 @@
     <div class="card bxsd" style="width: 95%;">
         <center>
             <h1 class="text-center"><%= data.judul %></h1>
-            <iframe src=<%= data.video %> class="d-flex align-items-center" alt="server error" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" width="420" height="370"></iframe>
+            <div id="frameKonten" class="mb-3">
+                <iframe src=<%= data.video %> class="d-flex align-items-center" alt="server error" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" width="420" height="370"></iframe>
+            </div>
+            <h6>Streaming:</h6>
+            <% data.video2.forEach(res =>{%>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                      <%= res.kualitas.replace("m","") %> 
+                    </button>
+                    <ul class="dropdown-menu">
+                    <% res.link.forEach((bt, dex) =>{%>
+                        <li><a class="dropdown-item" href="#" data-ctx="<%= bt.elem %>" onclick="btn(event,this)"><%= bt.via %></a></li>
+                        <% if(dex != res.link.length-1){%>
+                            <li><hr class="dropdown-divider"></li>
+                        <%} %>     
+                    <%}) %> 
+                    </ul>
+                  </div>                  
+            <%})%> 
+                  
+            <h6  class="mt-5">Download:</h6>
         </center> 
         <div class="card-body"> 
-           <% data.link.forEach(res =>{%>
-            <div class="card martop align-items-center mt-4">
+           <% data.link.forEach((res,idx) =>{%>
+            <div class="card martop align-items-center <%= idx ? 'mt-5' : ''%>">
                 <% res.forEach(dat =>{ %> 
                     <h5 class="bgrtxt defined text-center" style="width: 90%; font-size: 20px"><%= dat.kualitas  %> (<%= dat.size %>)</h3>
                         <div class="row">
@@ -21,3 +41,9 @@
     </div>
   </div>
   
+<script>
+    function btn(ev,dis){
+        ev.preventDefault();
+        document.querySelector("#frameKonten").innerHTML = atob(dis.dataset.ctx)
+    }
+</script>

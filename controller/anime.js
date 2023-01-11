@@ -1,6 +1,7 @@
 const axios = require("axios")
 const jsdom = require("jsdom")
 const {JSDOM} = jsdom
+const action = ["aa1208d27f29ca340c92c66d1926f13f", "2a3505c93b0035d3f455df82bf976b84"]
 
 const virtualConsole = new jsdom.VirtualConsole()
 // virtualConsole.on("error", () =>{
@@ -119,10 +120,36 @@ module.exports ={
         try{
             const has = await getData(`${website}/episode/${link}`)
             let vid = has.querySelector("div#venkonten div.venser")
-            
             let data = {
                 judul: vid.querySelector("h1.posttl").textContent,
                 video: has.querySelector("div#pembed div.responsive-embed-stream iframe").getAttribute("src"),
+                video2: await Promise.all(Array.from(vid.querySelectorAll("div#embed_holder > div.mirrorstream > ul"))
+                        .map(async ul =>{
+                            return{
+                                kualitas: ul.getAttribute("class"),
+                                link: await Promise.all(Array.from(ul.querySelectorAll("li"))
+                                    .map(async li =>{
+                                        let anya = li.querySelector("a");
+                                        let nonce = await axios.get(website+"/wp-admin/admin-ajax.php?action=" + action[0])
+                                        let config = {
+                                            method: 'post',
+                                            url: website+'/wp-admin/admin-ajax.php',
+                                            headers: {
+                                              'content-type': 'multipart/form-data'
+                                            },
+                                            data : {
+                                              ...(JSON.parse(atob(anya.getAttribute("data-content")))),
+                                              nonce: nonce.data.data,
+                                              action: action[1]
+                                            }
+                                          };
+                                        return{
+                                            via: anya.textContent,
+                                            elem: (await axios(config)).data.data
+                                        }
+                                    }))
+                            }
+                        })),
                 link: Array.from(vid.querySelector("div.download").querySelectorAll("ul")).map(res =>{
                     return Array.from(res.querySelectorAll("li")).map(nih =>{
                         return {

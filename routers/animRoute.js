@@ -35,13 +35,14 @@ router.get("/anime/:judul",async (req,res) =>{
 router.get("/episode/:juduleps", async (req,res) =>{
     try{
         const data = await sData.getEpisode(req.params.juduleps)
-        
+        // res.json(data)
         res.render("anim/page/episode", {
             data: data.data,
             layout: "anim/main-layout",
             current: "nothing"
         })
     }catch(err){
+        console.log(err)
         res.status(400).send("error!")
     }
 })

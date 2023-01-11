@@ -104,16 +104,22 @@ app.use("/bookmark", bookmarkRoute)
 app.get("/",(req,res) =>{
     res.render("utama/page/home",{
         layout: "utama/main-layout",
-        style: "/landing.css",
-        online: Object.keys(uOn.users).length,
-        today: uOn.today,
-        total: uOn.total
+        style: "/landing.css"
     })
 })
 
 app.get("/ngapainkesini", async (req,res) =>{
     let data = (await db.getCol("akun").find({}).toArray()).length
-    res.send(`<center><h1>Ngapain kesini? </h1><br><p>${data}</p></center>`);
+    res.send(`
+    <center>
+        <h1>Ngapain kesini? </h1>
+        <br>
+        <p>${data}</p>
+        <p>Online: ${Object.keys(uOn.users).length}</p>
+        <p>Today: ${uOn.today}</p>
+        <p>Total: ${uOn.total}</p>
+    </center>
+    `);
 })
 
 app.use("*",(req,res,next) =>{
