@@ -16,7 +16,7 @@ const user_agent = [
     'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.83 Safari/537.36',
     'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36'
 ]
-const website = "https://otakudesu.bid"
+const website = "https://otakudesu.asia"
 
 const getData = async (link)=>{
     const data = await axios.get(link, {
@@ -94,7 +94,7 @@ module.exports ={
                             .map(res =>{
                                 return {
                                     judul: res.querySelector("span a").textContent,
-                                    href: res.querySelector("span a").getAttribute("href").replace("https://otakudesu.bid/", ""),
+                                    href: res.querySelector("span a").getAttribute("href").replace(website+"/", "").replace("/anime","anime"),
                                     tanggal: res.querySelector("span.zeebr").textContent
                                     }
                                 })
