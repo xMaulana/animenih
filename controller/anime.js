@@ -53,7 +53,7 @@ module.exports ={
                     judul: res.querySelector("div.thumb div.thumbz h2").textContent,
                     episode : res.querySelector("div.epz").textContent.slice(1),
                     gambar : res.querySelector("div.thumb img").getAttribute("src"),
-                    href : res.querySelector("div.thumb a").getAttribute("href").replace("https://otakudesu.bid/anime/", "")
+                    href : res.querySelector("div.thumb a").getAttribute("href").replace(website+"/anime/", "")
                 }
                 anim.onGoing.push(hasil)
             })
@@ -64,7 +64,7 @@ module.exports ={
                     judul: res.querySelector("div.thumb div.thumbz h2").textContent,
                     episode : res.querySelector("div.epz").textContent,
                     gambar : res.querySelector("div.thumb img").getAttribute("src"),
-                    href : res.querySelector("div.thumb a").getAttribute("href").replace("https://otakudesu.bid/anime/","")
+                    href : res.querySelector("div.thumb a").getAttribute("href").replace(website+"/anime/","")
                 }
                 anim.selesai.push(hasil)
             })
@@ -105,7 +105,7 @@ module.exports ={
                             .map(res =>{
                                 return {
                                     gambar: res.querySelector("div.isi-anime a img").getAttribute("src"),
-                                    link: res.querySelector("div.isi-anime a").getAttribute("href").replace("https://otakudesu.bid/anime/", ""),
+                                    link: res.querySelector("div.isi-anime a").getAttribute("href").replace(website+"/anime/", ""),
                                     judul: res.querySelector("div.isi-anime span a").textContent
                                 }
                             })
@@ -301,7 +301,7 @@ module.exports ={
                             rilis: res.querySelector("div.col-anime-date").textContent,
                             genre: res.querySelector("div.col-anime-genre").textContent,
                             sinopsis: res.querySelector("div.col-synopsis").textContent,
-                            href: res.querySelector("div.col-anime-title > a").getAttribute("href").replace("https://otakudesu.bid/","")
+                            href: res.querySelector("div.col-anime-title > a").getAttribute("href").replace(website,"")
                         }
                 }),
                 jmlPage: 0
