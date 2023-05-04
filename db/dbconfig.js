@@ -1,5 +1,5 @@
 const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb://sleepin:mongodbUser@0.0.0.0:27017";
+const uri = "mongodb://sleepin:mongodbUser@47.250.40.77:27017/";
 
 const client = new MongoClient(uri, {useNewUrlParser: true})
 const db = "sleepingowl";
