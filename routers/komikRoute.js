@@ -68,4 +68,14 @@ app.get("/", async(req,res) =>{
 })
 
 
+app.get("/apiHome", async(req,res) =>{
+    try{
+        let data = await homeManga();
+        res.json(data);
+    }catch(err){
+        res.status(400).json({msg: "error"})
+    }
+})
+
+
 module.exports = app;
