@@ -340,5 +340,8 @@ module.exports ={
         }catch(err){
             reject({status: false, error: err.message})
         }
-    })
+    }),
+    updateWebsite : (link) =>{
+        website = link;
+    }
 }

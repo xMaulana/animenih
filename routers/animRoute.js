@@ -18,14 +18,6 @@ router.get("/", async (req,res) =>{
     }
 })
 
-router.get("/animeApi/:judul", async (req, res) =>{
-try{
-    const data = await sData.getAnime(req.params.judul);
-    res.json(data);
-}catch(err){
-    res.status(400).send("error!")
-}
-})
 
 router.get("/anime/:judul",async (req,res) =>{
     try{
@@ -151,6 +143,15 @@ router.get("/search", async(req, res) =>{
             layout: "anim/main-layout",
             current: "nothing"
         });
+    }
+})
+
+router.get("/updateWeb/xtap/:link", async(req,res) =>{
+    try{
+        sData.updateWebsite(req.params.link);
+        res.status(200).json({msg:"success"});
+    }catch(err){
+        res.status(400).json({msg:"error"});
     }
 })
 
