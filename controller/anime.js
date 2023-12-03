@@ -16,7 +16,7 @@ const user_agent = [
     'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.83 Safari/537.36',
     'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36'
 ]
-const website = "https://otakudesu.lol"
+const website = "https://otakudesu.cam"
 
 const getData = async (link)=>{
     const data = await axios.get(link, {

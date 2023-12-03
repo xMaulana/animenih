@@ -1,6 +1,11 @@
 const app = require("express").Router()
 const {homeManga, searchManga, viewManga, readManga} = require("../controller/manga")
 
+
+
+app.get("/", (req,res)=>{
+ res.send("<h1>Maaf, sedang ada masalah disini </h1>").status(500)
+})
 app.post("/cariManga", async (req,res) =>{
     try{
         let data = await searchManga(req.body.manga)
