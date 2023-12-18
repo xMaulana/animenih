@@ -68,7 +68,7 @@ app.use(async (req, res, next) =>{
     if(!req.cookies["sleepingowl"]){
         let hex = require("crypto").randomBytes(30).toString("hex")
         await res.cookie("sleepingowl",hex , {sameSite: "none", secure: true})
-        await db.getCol("akun").insertOne({ip:req.ip,userAgent: req.headers["user-agent"],cookie: hex})
+        // await db.getCol("akun").insertOne({ip:req.ip,userAgent: req.headers["user-agent"],cookie: hex})
     }
 
     if(req.session.userId){
