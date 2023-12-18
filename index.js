@@ -18,7 +18,7 @@ const saranRoute = require("./routers/saranRoute")
 const bookmarkRoute = require("./routers/bookmarkRoute")
 
 //db
-const db = require("./db/dbconfig")
+// const db = require("./db/dbconfig")
 
 //env
 const app = express();
@@ -129,7 +129,7 @@ app.use("*",(req,res,next) =>{
 
 server.listen(PORT, async()=>{
     try{
-        let data = await db.connect();
+        // let data = await db.connect();
         console.log(data.msg);
         console.log("Aplikasi berjalan pada port "+ PORT) + PORT
     }catch(err){
