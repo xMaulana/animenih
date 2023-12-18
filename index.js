@@ -109,7 +109,7 @@ app.get("/",(req,res) =>{
 })
 
 app.get("/ngapainkesini", async (req,res) =>{
-    let data = (await db.getCol("akun").find({}).toArray()).length
+    let data = "data"
     res.send(`
     <center>
         <h1>Ngapain kesini? </h1>
@@ -130,7 +130,7 @@ app.use("*",(req,res,next) =>{
 server.listen(PORT, async()=>{
     try{
         // let data = await db.connect();
-        console.log(data.msg);
+        // console.log(data.msg);
         console.log("Aplikasi berjalan pada port "+ PORT) + PORT
     }catch(err){
         console.log(err)
