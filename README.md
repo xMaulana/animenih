@@ -10,4 +10,4 @@ node index.js
 
 
 
-some of those private username, pass, ids, etc maybe not work, you can fork this repo and modify it with your own 
+Some of those private usernames, pwds, IDs, etc maybe not work. You can fork this repo and modify it with your own 
