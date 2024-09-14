@@ -1,4 +1,4 @@
-# ANIMENIH | NONTON ANIME & BACA MANGA (deprecated)
+# ANIMENIH | NONTON ANIME & BACA MANGA
 
 
 This is my old project
